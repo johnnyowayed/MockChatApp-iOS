@@ -8,11 +8,12 @@
 
 import UIKit
 import RBSRealmBrowser
+import RealmSwift
 
 class ChatListTableViewController: UITableViewController {
     
     var array_ChatList = [ChatListModel]()
-    var listNumber = 200
+    var listNumber = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +24,13 @@ class ChatListTableViewController: UITableViewController {
         
         let bbi = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openBrowser))
         self.navigationItem.rightBarButtonItem = bbi
+        
+        sortData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tableView.reloadData()
+        self.sortData()
     }
     
     @objc func openBrowser() {
@@ -52,6 +55,14 @@ class ChatListTableViewController: UITableViewController {
         }
     }
     
+    func sortData() {
+        let realm = try! Realm()
+        let sorted = realm.objects(ChatListModel.self).sorted(byKeyPath: "date", ascending: false)
+        
+        self.array_ChatList = Array(sorted)
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -61,14 +72,12 @@ class ChatListTableViewController: UITableViewController {
         return self.array_ChatList.count
     }
     
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let lastMessage = self.array_ChatList[indexPath.row].messages.last?.messageText ?? ""
         
         (cell.viewWithTag(1) as? UIImageView)?.image = UIImage.init(named: "no-image")
         (cell.viewWithTag(2) as? UILabel)?.text = self.array_ChatList[indexPath.row].userName.capitalizingFirstLetter()
-        
         
         if lastMessage != "" {
             (cell.viewWithTag(3) as? UILabel)?.isHidden = false
@@ -78,12 +87,10 @@ class ChatListTableViewController: UITableViewController {
             
             let dateString = Utils.fetchFormatedDateString(date: self.array_ChatList[indexPath.row].date ?? Date())
             (cell.viewWithTag(4) as? UILabel)?.text = dateString
-            
         }else {
             (cell.viewWithTag(3) as? UILabel)?.isHidden = true
             (cell.viewWithTag(4) as? UILabel)?.isHidden = true
         }
-        
         return cell
     }
     

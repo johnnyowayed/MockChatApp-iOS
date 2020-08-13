@@ -32,6 +32,7 @@ class ChatListModel: RealmHelper {
     }
     
     func appendMessage(withMessage message:MessageModel) {
+        self.date = message.date
         self.messages.append(message)
         self.saveOrUpdate()
     }
