@@ -1,7 +1,5 @@
 PODS:
   - GrowingTextView (0.7.2)
-  - RBSRealmBrowser (0.4.0):
-    - RealmSwift
   - Realm (5.1.0):
     - Realm/Headers (= 5.1.0)
   - Realm/Headers (5.1.0)
@@ -13,7 +11,6 @@ PODS:
 
 DEPENDENCIES:
   - GrowingTextView
-  - RBSRealmBrowser
   - RealmSwift
   - SnapKit
   - SwiftDate
@@ -22,7 +19,6 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - GrowingTextView
-    - RBSRealmBrowser
     - Realm
     - RealmSwift
     - SnapKit
@@ -31,13 +27,12 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   GrowingTextView: 876bf42005b5e4a4fd740597db12caaf41f0fe6c
-  RBSRealmBrowser: d74ea8d237bc2729bc3398afa99ce7b479059b37
   Realm: bdea546851e37b4cf0a2400cef115c7c26fda488
   RealmSwift: 70945aa168db93b215c460e9c8ef680261aa28af
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
   SwiftyTimer: 02dd6cf10cbc71cbf67cec494f6e5eb782102543
 
-PODFILE CHECKSUM: 3aa85e3aa0bbd53b11a5563e06d7b8d0d9a0d7ba
+PODFILE CHECKSUM: d80cbfe677a16cd858230c6f2b324c0672491a64
 
 COCOAPODS: 1.9.3

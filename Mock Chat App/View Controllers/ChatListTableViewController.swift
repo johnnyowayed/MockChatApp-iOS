@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RBSRealmBrowser
 import RealmSwift
 
 class ChatListTableViewController: UITableViewController {
@@ -19,23 +18,12 @@ class ChatListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         self.title = "Chat List"
-        
         self.generateData()
-        
-        let bbi = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openBrowser))
-        self.navigationItem.rightBarButtonItem = bbi
-        
-        sortData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.sortData()
-    }
-    
-    @objc func openBrowser() {
-        guard let realmBrowser = RBSRealmBrowser.realmBrowser(showing: ["ChatListModel"]) else { return }
-        present(realmBrowser, animated: true, completion: nil)
     }
     
     func generateData() {

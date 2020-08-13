@@ -10,7 +10,6 @@ target 'Mock Chat App' do
   pod 'RealmSwift'
   pod 'SnapKit'
   pod 'GrowingTextView'
-  pod 'RBSRealmBrowser'
   pod 'SwiftDate'
   pod 'SwiftyTimer'
   
