@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatView" customModule="Mobile_Chat_Test" customModuleProvider="target">
+            <connections>
+                <outlet property="button_Send" destination="ZYO-bI-feG" id="7Av-bH-7s3"/>
+                <outlet property="contentView" destination="J92-Do-9JG" id="cfg-EP-u7Q"/>
+                <outlet property="inputToolbar" destination="J92-Do-9JG" id="Yn0-mt-R6k"/>
+                <outlet property="stackView" destination="R3w-kb-R0O" id="wh1-DM-u9B"/>
+                <outlet property="stackViewBottomConstraint" destination="HYt-4n-fE8" id="3UG-mS-8t7"/>
+                <outlet property="tableView" destination="YP6-xg-LWn" id="dAF-Kv-2t1"/>
+                <outlet property="textView" destination="i5e-kP-bVE" id="RvP-0J-1Pr"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="CiZ-i4-fXQ">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YP6-xg-LWn">
+                    <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J92-Do-9JG">
+                    <rect key="frame" x="0.0" y="813" width="414" height="83"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="R3w-kb-R0O">
+                            <rect key="frame" x="8" y="8" width="398" height="33"/>
+                            <subviews>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="i5e-kP-bVE" customClass="GrowingTextView" customModule="GrowingTextView">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="33"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                    <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="maxLength">
+                                            <integer key="value" value="200"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="maxHeight">
+                                            <real key="value" value="70"/>
+                                        </userDefinedRuntimeAttribute>
+                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Aa"/>
+                                    </userDefinedRuntimeAttributes>
+                                </textView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYO-bI-feG">
+                                    <rect key="frame" x="358" y="0.0" width="40" height="33"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="jQa-0O-f3v"/>
+                                    </constraints>
+                                    <state key="normal" image="send_icon"/>
+                                    <connections>
+                                        <action selector="sendButtonPressed:" destination="-1" eventType="touchUpInside" id="ryL-Zo-M4F"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="tertiarySystemFillColor" red="0.46274509800000002" green="0.46274509800000002" blue="0.50196078430000002" alpha="0.12" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="R3w-kb-R0O" secondAttribute="trailing" constant="8" id="317-rM-af9"/>
+                        <constraint firstItem="R3w-kb-R0O" firstAttribute="leading" secondItem="J92-Do-9JG" secondAttribute="leading" constant="8" id="ELD-h4-5LP"/>
+                        <constraint firstItem="R3w-kb-R0O" firstAttribute="top" secondItem="J92-Do-9JG" secondAttribute="top" constant="8" id="XOl-SB-eEd"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="J92-Do-9JG" secondAttribute="bottom" id="0Iz-Pj-YeK"/>
+                <constraint firstItem="YP6-xg-LWn" firstAttribute="leading" secondItem="fmU-GV-rRV" secondAttribute="leading" id="57C-Fp-gFb"/>
+                <constraint firstItem="J92-Do-9JG" firstAttribute="trailing" secondItem="CiZ-i4-fXQ" secondAttribute="trailing" id="CD5-Va-aCh"/>
+                <constraint firstItem="fmU-GV-rRV" firstAttribute="bottom" secondItem="R3w-kb-R0O" secondAttribute="bottom" constant="8" id="HYt-4n-fE8"/>
+                <constraint firstItem="YP6-xg-LWn" firstAttribute="top" secondItem="fmU-GV-rRV" secondAttribute="top" id="P6K-HU-LK8"/>
+                <constraint firstItem="J92-Do-9JG" firstAttribute="centerX" secondItem="CiZ-i4-fXQ" secondAttribute="centerX" id="Zzk-I0-QIb"/>
+                <constraint firstItem="J92-Do-9JG" firstAttribute="top" secondItem="YP6-xg-LWn" secondAttribute="bottom" id="cLF-1s-O4D"/>
+                <constraint firstItem="YP6-xg-LWn" firstAttribute="trailing" secondItem="fmU-GV-rRV" secondAttribute="trailing" id="igz-oa-T9a"/>
+                <constraint firstItem="J92-Do-9JG" firstAttribute="leading" secondItem="CiZ-i4-fXQ" secondAttribute="leading" id="j3w-R4-XRj"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fmU-GV-rRV"/>
+            <point key="canvasLocation" x="269.56521739130437" y="-348.21428571428572"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="send_icon" width="21.5" height="21.5"/>
+    </resources>
+</document>

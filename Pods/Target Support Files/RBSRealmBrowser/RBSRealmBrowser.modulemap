@@ -1,0 +1,6 @@
+framework module RBSRealmBrowser {
+  umbrella header "RBSRealmBrowser-umbrella.h"
+
+  export *
+  module * { export * }
+}
