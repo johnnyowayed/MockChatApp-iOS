@@ -149,7 +149,6 @@ class ChatView: UIView {
                 self.scrollToBottom()
             }
         }
-        
     }
 }
 
@@ -189,13 +188,20 @@ extension ChatView: UITableViewDelegate, UITableViewDataSource {
         textView?.text = nil
         timeLabel?.text = nil
         
-        textView?.text = messageModel.messageText
+        textView?.text = messageModel.messageText.trimmingCharacters(in: .whitespacesAndNewlines)
         
         let dateString = Utils.fetchFormatedDateString(date: messageModel.date)
         timeLabel?.text = dateString
         
         bubbleView?.layer.cornerRadius = 8
         
+        if self.chatListModel.id == array_Messages[indexPath.row].senderId {
+            if self.traitCollection.userInterfaceStyle == .dark {
+                bubbleView?.backgroundColor = .darkGray
+            } else {
+                bubbleView?.backgroundColor = .lightGray
+            }
+        }
         return cell
     }
     

@@ -98,7 +98,7 @@ class ChatListTableViewController: UITableViewController {
         self.tableView.deselectRow(at: indexPath, animated: true)
         
         let chatVC = storyboard?.instantiateViewController(identifier: "ChatViewController") as? ChatViewController
-        chatVC?.title = self.array_ChatList[indexPath.row].userName
+        chatVC?.title = self.array_ChatList[indexPath.row].userName.capitalizingFirstLetter()
         chatVC?.chatListModel = self.array_ChatList[indexPath.row]
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)

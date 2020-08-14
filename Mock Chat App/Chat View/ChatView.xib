@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatView" customModule="Mobile_Chat_Test" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatView" customModule="Mock_Chat_App" customModuleProvider="target">
             <connections>
                 <outlet property="button_Send" destination="ZYO-bI-feG" id="7Av-bH-7s3"/>
                 <outlet property="contentView" destination="J92-Do-9JG" id="cfg-EP-u7Q"/>
@@ -54,6 +54,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="40" id="jQa-0O-f3v"/>
                                     </constraints>
+                                    <color key="tintColor" red="0.0" green="0.70588235290000001" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <state key="normal" image="send_icon"/>
                                     <connections>
                                         <action selector="sendButtonPressed:" destination="-1" eventType="touchUpInside" id="ryL-Zo-M4F"/>

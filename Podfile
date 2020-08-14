@@ -6,7 +6,6 @@ target 'Mock Chat App' do
   use_frameworks!
 
   # Pods for Mobile Chat Test
-  
   pod 'RealmSwift'
   pod 'SnapKit'
   pod 'GrowingTextView'
