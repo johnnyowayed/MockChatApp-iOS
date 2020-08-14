@@ -26,6 +26,13 @@ class ChatListTableViewController: UITableViewController {
         self.sortData()
     }
     
+    func createIdIfNeeded() {
+        let myId = Utils.fetchUserDefault(key: MY_USER_ID)
+        if myId == nil {
+            Utils.saveUserDefault(inKey: MY_USER_ID, withValue: UUID.init().uuidString)
+        }
+    }
+    
     func generateData() {
         
         var array_Names = [String]()
