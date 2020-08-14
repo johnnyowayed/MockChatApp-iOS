@@ -11,8 +11,6 @@
             <connections>
                 <outlet property="button_Send" destination="ZYO-bI-feG" id="7Av-bH-7s3"/>
                 <outlet property="contentView" destination="J92-Do-9JG" id="cfg-EP-u7Q"/>
-                <outlet property="inputToolbar" destination="J92-Do-9JG" id="Yn0-mt-R6k"/>
-                <outlet property="stackView" destination="R3w-kb-R0O" id="wh1-DM-u9B"/>
                 <outlet property="stackViewBottomConstraint" destination="HYt-4n-fE8" id="3UG-mS-8t7"/>
                 <outlet property="tableView" destination="YP6-xg-LWn" id="dAF-Kv-2t1"/>
                 <outlet property="textView" destination="i5e-kP-bVE" id="RvP-0J-1Pr"/>
@@ -24,17 +22,17 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YP6-xg-LWn">
-                    <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="752"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J92-Do-9JG">
-                    <rect key="frame" x="0.0" y="813" width="414" height="83"/>
+                    <rect key="frame" x="0.0" y="796" width="414" height="100"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="R3w-kb-R0O">
-                            <rect key="frame" x="8" y="8" width="398" height="33"/>
+                            <rect key="frame" x="8" y="8" width="398" height="50"/>
                             <subviews>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="i5e-kP-bVE" customClass="GrowingTextView" customModule="GrowingTextView">
-                                    <rect key="frame" x="0.0" y="0.0" width="350" height="33"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="50"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                     <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -50,7 +48,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </textView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYO-bI-feG">
-                                    <rect key="frame" x="358" y="0.0" width="40" height="33"/>
+                                    <rect key="frame" x="358" y="0.0" width="40" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="40" id="jQa-0O-f3v"/>
                                     </constraints>
