@@ -19,9 +19,7 @@ enum TableViewCellId:String {
 class ChatView: UIView {
     
     @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var inputToolbar: UIView!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var button_Send: UIButton!
     @IBOutlet weak var textView: GrowingTextView!
     @IBOutlet weak var stackViewBottomConstraint: NSLayoutConstraint!
@@ -140,6 +138,7 @@ class ChatView: UIView {
     }
 }
 
+// MARK: - IBActions
 extension ChatView {
     @IBAction func sendButtonPressed(_ sender: Any) {
         let userData = self.chatListModel
@@ -156,6 +155,7 @@ extension ChatView {
     }
 }
 
+// MARK: - TableView Delegate & DataSource
 extension ChatView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -212,6 +212,7 @@ extension ChatView: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+// MARK: - GrowingTextView Delegate
 extension ChatView: GrowingTextViewDelegate {
     func textViewDidChangeHeight(_ textView: GrowingTextView, height: CGFloat) {
         UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [.curveLinear], animations: { () -> Void in
@@ -220,7 +221,7 @@ extension ChatView: GrowingTextViewDelegate {
     }
 }
 
-//MARK: - UITextView Delegates
+//MARK: - UITextView Delegate
 extension ChatView: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {

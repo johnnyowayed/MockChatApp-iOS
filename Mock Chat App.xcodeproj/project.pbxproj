@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9F79AD08648DABC8B76778CD /* Pods_Mock_Chat_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B684EA3570E849C5FECDA8E4 /* Pods_Mock_Chat_App.framework */; };
-		B26994E924E698A700BB6A38 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B26994E824E698A700BB6A38 /* UIColor.swift */; };
 		B279F97824E3D3C7003628AB /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B279F97724E3D3C6003628AB /* Utils.swift */; };
 		B279F97B24E3E399003628AB /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B279F97A24E3E399003628AB /* UITableViewExtensions.swift */; };
 		B279F97D24E40D18003628AB /* RealmHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B279F97C24E40D18003628AB /* RealmHelper.swift */; };
@@ -31,7 +30,6 @@
 
 /* Begin PBXFileReference section */
 		5CB6609B792054B1BDA8CDCA /* Pods-Mock Chat App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mock Chat App.release.xcconfig"; path = "Target Support Files/Pods-Mock Chat App/Pods-Mock Chat App.release.xcconfig"; sourceTree = "<group>"; };
-		B26994E824E698A700BB6A38 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		B279F97724E3D3C6003628AB /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		B279F97A24E3E399003628AB /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		B279F97C24E40D18003628AB /* RealmHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHelper.swift; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 			children = (
 				B279F97A24E3E399003628AB /* UITableViewExtensions.swift */,
 				B2D4D92724E53E84005F871E /* StringExtension.swift */,
-				B26994E824E698A700BB6A38 /* UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -164,8 +161,8 @@
 		B2E0C41624E2D74F0061A720 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				B2E0C41724E2D7610061A720 /* DataGenerator.swift */,
 				B279F97724E3D3C6003628AB /* Utils.swift */,
+				B2E0C41724E2D7610061A720 /* DataGenerator.swift */,
 				B279F97C24E40D18003628AB /* RealmHelper.swift */,
 			);
 			path = Utils;
@@ -317,7 +314,6 @@
 				B2E0C41024E2D4C10061A720 /* ChatViewController.swift in Sources */,
 				B279F97D24E40D18003628AB /* RealmHelper.swift in Sources */,
 				B2E0C42024E2D8990061A720 /* ChatView.swift in Sources */,
-				B26994E924E698A700BB6A38 /* UIColor.swift in Sources */,
 				B2E0C3FC24E2D4450061A720 /* SceneDelegate.swift in Sources */,
 				B2D4D92824E53E84005F871E /* StringExtension.swift in Sources */,
 				B2E0C42424E2DB560061A720 /* MessageModel.swift in Sources */,

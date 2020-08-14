@@ -75,7 +75,7 @@ class RealmHelper: Object {
     final class func write(_ code: () -> ()) {
         let realm = RealmHelper.realm()
         if realm.isInWriteTransaction {
-            try code()
+            code()
         } else {
             // update or add in realm
             try! realm.write {
