@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import RBSRealmBrowser
 
 class ChatListTableViewController: UITableViewController {
     
@@ -19,6 +20,14 @@ class ChatListTableViewController: UITableViewController {
         
         self.title = "Chat List"
         self.generateData()
+        
+        let bbi = UIBarButtonItem(title: "Open", style: .plain, target: self, action:   #selector(openBrowser))
+        navigationItem.rightBarButtonItem = bbi
+    }
+    
+    @objc func openBrowser() {
+        guard let realmBrowser = RBSRealmBrowser.realmBrowser(showing: ["ChatListModel"]) else { return }
+        present(realmBrowser, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,13 +39,14 @@ class ChatListTableViewController: UITableViewController {
         
         var array_Names = [String]()
         self.array_ChatList = ChatListModel.currentList()
+        let profilePic = UIImage.init(named: "no-image")
         
         if self.array_ChatList.isEmpty {
             while array_Names.count<listNumber {
                 let name = DataGenerator.randomString()
                 if !array_Names.contains(name) {
                     array_Names.append(name)
-                    self.array_ChatList.append(ChatListModel.create(withUserName: name))
+                    self.array_ChatList.append(ChatListModel.create(withUserName: name, profilePicture: profilePic?.pngData() ?? Data()))
                 }
             }
             self.array_ChatList.saveInRealm()

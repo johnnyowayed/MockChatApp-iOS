@@ -10,7 +10,6 @@ import UIKit
 import SnapKit
 import GrowingTextView
 import SwiftDate
-import SwiftyTimer
 
 enum TableViewCellId:String {
     case Text_Sent = "Cell-Text-Sent"
@@ -92,7 +91,7 @@ class ChatView: UIView {
         self.textView.delegate = self
         self.textView?.layer.cornerRadius = 8
         
-        self.sendButtonAnimation(isHidden: true)
+        self.button_Send.isHidden = true
         
         let chatList = self.chatListModel.messages
         if !chatList.isEmpty {
@@ -118,17 +117,17 @@ class ChatView: UIView {
         return nib
     }
     
-    private func sendButtonAnimation(isHidden:Bool) {
-        UIView.animate(withDuration: 0.3,
-                       delay: 0.0,
-                       usingSpringWithDamping: 0.9,
-                       initialSpringVelocity: 1,
-                       options: [],
-                       animations: {
-                        self.button_Send.isHidden = isHidden
-        },
-                       completion: nil)
-    }
+//    private func sendButtonAnimation(isHidden:Bool) {
+//        UIView.animate(withDuration: 0.3,
+//                       delay: 0.0,
+//                       usingSpringWithDamping: 0.9,
+//                       initialSpringVelocity: 1,
+//                       options: [],
+//                       animations: {
+//                        self.button_Send.isHidden = isHidden
+//        },
+//                       completion: nil)
+//    }
     
     func reloadData() {
         self.tableView.reloadData()
@@ -137,17 +136,18 @@ class ChatView: UIView {
     
     func generateEcho() {
         let echoText = self.array_Messages.last?.messageText ?? ""
-        Timer.after(0.5.second) {
-            let userData = self.chatListModel
-            let messageModel = MessageModel.create(withMessage: echoText, senderId: userData?.id ?? "", receiveId: "Me" )
-            for _ in 0...1 {
-                RealmHelper.write {
-                    self.chatListModel.appendMessage(withMessage: messageModel)
-                }
-                self.array_Messages.append(messageModel)
-                self.tableView.reloadData()
-                self.scrollToBottom()
-            }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+           let userData = self.chatListModel
+           let messageModel = MessageModel.create(withMessage: echoText, senderId: userData?.id ?? "", receiveId: "Me" )
+           for _ in 0...1 {
+               RealmHelper.write {
+                   self.chatListModel.appendMessage(withMessage: messageModel)
+               }
+               self.array_Messages.append(messageModel)
+               self.tableView.reloadData()
+               self.scrollToBottom()
+           }
         }
     }
 }
@@ -163,6 +163,7 @@ extension ChatView {
         self.tableView.reloadData()
         self.textView.text = ""
         self.scrollToBottom()
+        self.button_Send.isHidden = true
         self.generateEcho()
     }
 }
@@ -236,9 +237,9 @@ extension ChatView: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
         if !textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-             self.sendButtonAnimation(isHidden: false)
+             self.button_Send.isHidden = false
         } else{
-            self.sendButtonAnimation(isHidden: true)
+            self.button_Send.isHidden = true
         }
     }
     

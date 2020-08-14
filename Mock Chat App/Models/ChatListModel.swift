@@ -23,10 +23,11 @@ class ChatListModel: RealmHelper {
         return "id"
     }
     
-    class func create(withUserName username:String) -> ChatListModel {
+    class func create(withUserName username:String, profilePicture:Data) -> ChatListModel {
         
         let chatListModel = ChatListModel()
         chatListModel.userName = username
+        chatListModel.profilePicture = profilePicture
 
         return chatListModel
     }
