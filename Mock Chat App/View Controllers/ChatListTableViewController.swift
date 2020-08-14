@@ -8,26 +8,17 @@
 
 import UIKit
 import RealmSwift
-import RBSRealmBrowser
 
 class ChatListTableViewController: UITableViewController {
     
     var array_ChatList = [ChatListModel]()
-    var listNumber = 5
+    var listNumber = 200
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Chat List"
         self.generateData()
-        
-        let bbi = UIBarButtonItem(title: "Open", style: .plain, target: self, action:   #selector(openBrowser))
-        navigationItem.rightBarButtonItem = bbi
-    }
-    
-    @objc func openBrowser() {
-        guard let realmBrowser = RBSRealmBrowser.realmBrowser(showing: ["ChatListModel"]) else { return }
-        present(realmBrowser, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -74,18 +65,18 @@ class ChatListTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let lastMessage = self.array_ChatList[indexPath.row].messages.last?.messageText ?? ""
         
-        (cell.viewWithTag(1) as? UIImageView)?.image = UIImage.init(named: "no-image")
         (cell.viewWithTag(2) as? UILabel)?.text = self.array_ChatList[indexPath.row].userName.capitalizingFirstLetter()
         
         if lastMessage != "" {
             (cell.viewWithTag(3) as? UILabel)?.isHidden = false
             (cell.viewWithTag(4) as? UILabel)?.isHidden = false
-            
             (cell.viewWithTag(3) as? UILabel)?.text = "\(lastMessage)"
-            
+            (cell.viewWithTag(1) as? UIImageView)?.image = UIImage.init(named: "user-lastMessage")
             let dateString = Utils.fetchFormatedDateString(date: self.array_ChatList[indexPath.row].date ?? Date())
             (cell.viewWithTag(4) as? UILabel)?.text = dateString
         }else {
+            (cell.viewWithTag(1) as? UIImageView)?.image = UIImage.init(named: "user")
+            (cell.viewWithTag(1) as? UIImageView)?.tintColor = .lightGray
             (cell.viewWithTag(3) as? UILabel)?.isHidden = true
             (cell.viewWithTag(4) as? UILabel)?.isHidden = true
         }

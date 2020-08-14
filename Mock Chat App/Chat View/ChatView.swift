@@ -117,18 +117,6 @@ class ChatView: UIView {
         return nib
     }
     
-//    private func sendButtonAnimation(isHidden:Bool) {
-//        UIView.animate(withDuration: 0.3,
-//                       delay: 0.0,
-//                       usingSpringWithDamping: 0.9,
-//                       initialSpringVelocity: 1,
-//                       options: [],
-//                       animations: {
-//                        self.button_Send.isHidden = isHidden
-//        },
-//                       completion: nil)
-//    }
-    
     func reloadData() {
         self.tableView.reloadData()
         self.scrollToBottom()
