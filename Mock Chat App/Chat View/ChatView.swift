@@ -125,7 +125,7 @@ class ChatView: UIView {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
            let userData = self.chatListModel
-            let messageModel = MessageModel.create(withMessage: echoText, senderId: userData?.id ?? "", receiveId: Utils.fetchUserDefault(key: MY_USER_ID) as! String )
+            let messageModel = MessageModel.create(withMessage: echoText, senderId: userData?.id ?? "", receiveId: Utils.fetchUserDefault(key: MY_USER_ID) as? String ?? "" )
            for _ in 0...1 {
                RealmHelper.write {
                    self.chatListModel.appendMessage(withMessage: messageModel)
@@ -142,7 +142,7 @@ class ChatView: UIView {
 extension ChatView {
     @IBAction func sendButtonPressed(_ sender: Any) {
         let userData = self.chatListModel
-        let messageModel = MessageModel.create(withMessage: self.textView.text.trimmingCharacters(in: .whitespacesAndNewlines), senderId: Utils.fetchUserDefault(key: MY_USER_ID) as! String, receiveId: userData?.id ?? "")
+        let messageModel = MessageModel.create(withMessage: self.textView.text.trimmingCharacters(in: .whitespacesAndNewlines), senderId: Utils.fetchUserDefault(key: MY_USER_ID) as? String ?? "", receiveId: userData?.id ?? "")
         RealmHelper.write {
             self.chatListModel.appendMessage(withMessage: messageModel)
         }
