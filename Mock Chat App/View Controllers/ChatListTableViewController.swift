@@ -19,6 +19,7 @@ class ChatListTableViewController: UITableViewController {
         
         self.title = "Chat List"
         self.generateData()
+        createIdIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
