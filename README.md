@@ -1,8 +1,8 @@
 # Mock Chat App
 > Messaging app that echo's any text sent.
 
-[![Language](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)]
-[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)]
+![Language](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)
+![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)
 
 ## Version
 
