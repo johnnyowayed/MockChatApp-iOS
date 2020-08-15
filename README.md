@@ -1,8 +1,8 @@
 # Mock Chat App
 > Messaging app that echo's any text sent.
 
-[![Swift Version][swift-image]][swift-url]
-[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
+[![Language](https://img.shields.io/badge/Swift-5.0-orange.svg?style=flat)]
+[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)]
 
 ## Version
 
