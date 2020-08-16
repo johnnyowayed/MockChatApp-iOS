@@ -61,7 +61,7 @@ class ChatView: UIView {
     }
     
     func scrollToBottom(animated:Bool? = true) {
-        self.tableView.scrollToBottom(animated: animated)
+        self.tableView.scroll(to: .bottom, animated: animated ?? true)
     }
     
     @objc func tapGestureHandler() {

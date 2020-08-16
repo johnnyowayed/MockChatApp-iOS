@@ -48,7 +48,7 @@
                                                 <constraint firstAttribute="width" constant="80" id="S9g-Sn-Jlv"/>
                                             </constraints>
                                         </stackView>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-image" translatesAutoresizingMaskIntoConstraints="NO" id="Vht-Z8-oDq">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="Vht-Z8-oDq">
                                             <rect key="frame" x="20" y="10" width="60" height="60"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" red="0.0" green="0.70588235290000001" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -160,6 +160,6 @@
     </scenes>
     <color key="tintColor" red="0.0" green="0.70588235290000001" blue="0.57254901960000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
     <resources>
-        <image name="no-image" width="512" height="512"/>
+        <image name="user" width="512" height="512"/>
     </resources>
 </document>

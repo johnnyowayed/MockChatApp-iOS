@@ -19,7 +19,7 @@ class ChatListTableViewController: UITableViewController {
         
         self.title = "Chat List"
         self.generateData()
-        createIdIfNeeded()
+        self.createIdIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,8 +38,8 @@ class ChatListTableViewController: UITableViewController {
         
         var array_Names = [String]()
         self.array_ChatList = ChatListModel.currentList()
-        let profilePic = UIImage.init(named: "no-image")
-        
+        let profilePic = UIImage.init(named: "user")
+        profilePic?.withTintColor(.lightGray)
         if self.array_ChatList.isEmpty {
             while array_Names.count<listNumber {
                 let name = DataGenerator.randomString()
