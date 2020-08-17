@@ -10,9 +10,12 @@ import UIKit
 import RealmSwift
 
 class ChatListTableViewController: UITableViewController {
-    
+        
     var array_ChatList = [ChatListModel]()
+    var array_FilteredChatList = [ChatListModel]()
     var listNumber = 200
+    
+    let searchController = UISearchController(searchResultsController: nil)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,7 @@ class ChatListTableViewController: UITableViewController {
         self.title = "Chat List"
         self.generateData()
         self.createIdIfNeeded()
+        self.setupSeachBar()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,21 +70,32 @@ class ChatListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchController.isActive == true && searchController.searchBar.text != "" {
+            return self.array_FilteredChatList.count
+        }
         return self.array_ChatList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        let lastMessage = self.array_ChatList[indexPath.row].messages.last?.messageText ?? ""
+        var lastMessage = self.array_ChatList[indexPath.row].messages.last?.messageText ?? ""
+        var date = self.array_ChatList[indexPath.row].date ?? Date()
+        var username = self.array_ChatList[indexPath.row].userName
         
-        (cell.viewWithTag(2) as? UILabel)?.text = self.array_ChatList[indexPath.row].userName.capitalizingFirstLetter()
+        if searchController.isActive == true && searchController.searchBar.text != "" {
+            lastMessage = self.array_FilteredChatList[indexPath.row].messages.last?.messageText ?? ""
+            date = self.array_FilteredChatList[indexPath.row].date ?? Date()
+            username = self.array_FilteredChatList[indexPath.row].userName
+        }
+        
+        (cell.viewWithTag(2) as? UILabel)?.text = username.capitalizingFirstLetter()
         
         if lastMessage != "" {
             (cell.viewWithTag(3) as? UILabel)?.isHidden = false
             (cell.viewWithTag(4) as? UILabel)?.isHidden = false
             (cell.viewWithTag(3) as? UILabel)?.text = "\(lastMessage)"
             (cell.viewWithTag(1) as? UIImageView)?.image = UIImage.init(named: "user-lastMessage")
-            let dateString = Utils.fetchFormatedDateString(date: self.array_ChatList[indexPath.row].date ?? Date())
+            let dateString = Utils.fetchFormatedDateString(date: date)
             (cell.viewWithTag(4) as? UILabel)?.text = dateString
         }else {
             (cell.viewWithTag(1) as? UIImageView)?.image = UIImage.init(named: "user")
@@ -106,11 +121,47 @@ class ChatListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         
-        let chatVC = storyboard?.instantiateViewController(identifier: "ChatViewController") as? ChatViewController
-        chatVC?.title = self.array_ChatList[indexPath.row].userName.capitalizingFirstLetter()
-        chatVC?.chatListModel = self.array_ChatList[indexPath.row]
+        var list = [ChatListModel]()
+        list = self.array_ChatList
         
+        if searchController.isActive == true && searchController.searchBar.text != "" {
+            list = self.array_FilteredChatList
+        }
+        
+        let chatVC = storyboard?.instantiateViewController(identifier: "ChatViewController") as? ChatViewController
+        chatVC?.title = list[indexPath.row].userName.capitalizingFirstLetter()
+        chatVC?.chatListModel = list[indexPath.row]
+        
+        self.searchController.dismiss(animated: false, completion: nil)
+        self.searchController.searchBar.text = nil
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         self.navigationController?.pushViewController(chatVC!, animated: true)
+    }
+}
+
+extension ChatListTableViewController: UISearchBarDelegate {
+    func setupSeachBar() {
+        self.searchController.obscuresBackgroundDuringPresentation = false
+        self.searchController.searchBar.delegate = self
+        self.searchController.searchBar.placeholder = "Search"
+        self.searchController.searchBar.sizeToFit()
+        self.searchController.searchBar.showsCancelButton = false
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.tableView.tableHeaderView = searchController.searchBar
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchController.searchBar.text = nil
+        self.tableView.reloadData()
+    }
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let searchString = searchController.searchBar.text
+        self.array_FilteredChatList = self.array_ChatList.filter({ (item) -> Bool in
+            let value: NSString = item.userName as NSString
+            return (value.range(of: searchString!, options: .caseInsensitive).location != NSNotFound)
+        })
+        self.tableView.reloadData()
     }
 }
