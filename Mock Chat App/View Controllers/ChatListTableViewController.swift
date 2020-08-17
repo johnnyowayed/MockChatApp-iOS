@@ -145,9 +145,9 @@ extension ChatListTableViewController: UISearchBarDelegate {
         self.searchController.searchBar.delegate = self
         self.searchController.searchBar.placeholder = "Search"
         self.searchController.searchBar.sizeToFit()
-        self.searchController.searchBar.showsCancelButton = false
         self.searchController.hidesNavigationBarDuringPresentation = false
-        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.searchController.searchBar.searchTextField.clearButtonMode = .never
+        self.searchController.searchBar.tintColor = Utils.hexStringToUIColor(hex: "00b492")
         self.tableView.tableHeaderView = searchController.searchBar
     }
     
